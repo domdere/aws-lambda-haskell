@@ -2,4 +2,8 @@
 *.o
 *.hi
 .stack-work/
+.cabal-sandbox/
+dist/
+cabal.sandbox.config
 \#*
+TAGS

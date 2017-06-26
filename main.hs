@@ -26,7 +26,8 @@ main = options >>= go
 initAWS :: IO Env
 initAWS = do
   lgr <- newLogger Trace stdout
-  awsEnv <- newEnv Ireland Discover <&> envLogger .~ lgr
+  -- default region?
+  awsEnv <- newEnv Discover <&> envLogger .~ lgr
   return awsEnv
 
 go :: MainConfig -> IO ()
@@ -36,7 +37,7 @@ go BuildLambda{..} = do
   -- build docker container
   buildDocker
   -- build executable with docker
-  exe <- stackInDocker (ImageName "ghc-centos:lapack") (unpack lambdaSrcDirectory) (unpack lambdaTargetName)
+  exe <- stackInDocker (ImageName "ghc-centos:lapack") (unpack lambdaSrcDirectory) (SimpleTarget $ unpack lambdaTargetName)
   -- extract supplementary libs...
   libs <- extractLibs (ImageName "ghc-centos:lapack") (unpack lambdaTargetName)
   -- pack executable with js shim in .zip file

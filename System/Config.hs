@@ -1,5 +1,6 @@
 module System.Config(MainConfig(..), options) where
 
+import           Data.Monoid ((<>))
 import           Data.Text
 import           Options.Applicative
 

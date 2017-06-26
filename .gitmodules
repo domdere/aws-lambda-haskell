@@ -4,3 +4,9 @@
 [submodule "hs-word2vec"]
 	path = hs-word2vec
 	url = git@github.com:abailly/hs-word2vec.git
+[submodule "lib/system-extra"]
+	path = lib/system-extra
+	url = https://github.com/abailly/system-extra.git
+[submodule "lib/hs-word2vec"]
+	path = lib/hs-word2vec
+	url = https://github.com/abailly/hs-word2vec.git
